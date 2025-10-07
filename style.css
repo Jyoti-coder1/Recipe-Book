@@ -5,9 +5,9 @@ body {
     padding: 0;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- Front Page Styles --- */
 .home-section {
     background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
     height: 100vh;
@@ -25,6 +25,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     max-width: 500px;
+    width: 90%;
 }
 
 .home-content h2 {
@@ -67,10 +68,16 @@ body {
     opacity: 0.9;
 }
 
-/* Optional: Animate appearance */
 @keyframes fadeInHome {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .home-content {
@@ -99,6 +106,7 @@ section {
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow-x: auto;
 }
 
 section:hover {
@@ -133,6 +141,8 @@ input[type="file"] {
     font-size: 1rem;
     background: #fff;
     transition: border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 input:focus,
@@ -162,11 +172,14 @@ button:hover {
     transform: scale(1.03);
 }
 
-.cards-container {
+.cards-container,
+.recent-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 25px;
     margin-top: 25px;
+    margin-bottom: 15px;
+    overflow-x: auto;
 }
 
 .recipe-card {
@@ -176,6 +189,7 @@ button:hover {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    min-width: 200px;
 }
 
 .recipe-card:hover {
@@ -203,6 +217,7 @@ button:hover {
     border-radius: 6px;
     font-size: 1rem;
     margin-top: 10px;
+    box-sizing: border-box;
 }
 
 .modal {
@@ -293,6 +308,22 @@ button:hover {
     }
 }
 
+@media (max-width: 900px) {
+    section {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .cards-container,
+    .recent-container {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .recipe-card {
+        min-width: 160px;
+    }
+}
+
 @media (max-width: 600px) {
     header h1 {
         font-size: 1.6rem;
@@ -302,7 +333,51 @@ button:hover {
         padding: 15px;
     }
 
+    .home-buttons {
+        gap: 12px;
+    }
+
+    .cards-container,
+    .recent-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .recipe-card {
+        min-width: 140px;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="file"],
+    #searchInput {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+
     button {
         font-size: 0.95rem;
+        padding: 10px;
     }
+}
+
+#backBtn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #85B339;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 200;
+    display: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+#backBtn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }

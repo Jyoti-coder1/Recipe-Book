@@ -13,8 +13,9 @@
     <header>
         <h1>Recipe Book</h1>
     </header>
+    <button id="backBtn">← Back</button>
 
-    <!-- Front Page -->
+    <!-- Home Page -->
     <section id="homePage" class="home-section">
         <div class="home-content">
             <h2>Welcome to Your Recipe Book 🍲</h2>
@@ -26,9 +27,8 @@
         </div>
     </section>
 
-    <!-- Main App Section (Initially Hidden) -->
+    <!-- Add Recipe Page -->
     <main id="appContent" style="display: none;">
-        <!-- Form Section -->
         <section class="form-section">
             <h2>Add a Recipe</h2>
             <form id="recipeForm">
@@ -43,25 +43,30 @@
                 <textarea id="steps" placeholder="Write preparation steps" required autocomplete="off"></textarea>
 
                 <label for="image">Recipe Image</label>
-                <input type="file" id="image" accept="image/*" required />
+                <input type="file" id="image" accept="image/*" />
 
                 <button type="submit">Add Recipe</button>
             </form>
-        </section>
 
-        <!-- Search Section -->
-        <section class="search-section">
-            <h2>Search Recipes</h2>
-            <input type="text" id="searchInput" placeholder="Type to search by name or ingredient..."
-                autocomplete="off" />
-        </section>
-
-        <!-- Recipes Section -->
-        <section class="recipes-section">
-            <h2>All Recipes</h2>
-            <div class="cards-container"></div>
+            <!-- Recently Added Section -->
+            <div class="recent-recipes">
+                <h3>Recently Added</h3>
+                <div class="recent-container"></div>
+            </div>
+            <button id="viewAllBtn">View All Recipes</button>
         </section>
     </main>
+
+    <!-- View All Recipes Page -->
+    <section id="viewRecipesPage" style="display: none;">
+        <h2>All Recipes</h2>
+        <div class="search-section">
+            <h3>Search Recipes</h3>
+            <input type="text" id="searchInput" placeholder="Type to search by name or ingredient..."
+                autocomplete="off" />
+        </div>
+        <div class="cards-container"></div>
+    </section>
 
     <!-- Recipe Modal -->
     <div id="recipeModal" class="modal">
